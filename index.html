@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クロスフィット大塚 - 10月グランドリニューアルオープン！</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-menu a:hover {
+            background: rgba(246, 139, 30, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* First View */
+        .hero {
+            height: 120vh;
+            background-image: url('https://page.gensparksite.com/v1/base64_upload/820f61776ab368b86c8371865ea3bc2d');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #F68B1E;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #F68B1E, #E67600);
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(246, 139, 30, 0.4);
+            margin-top: 80px; /* 3cm下げる調整 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #E67600, #D66500);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(246, 139, 30, 0.6);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .section-title.orange {
+            color: #F68B1E;
+        }
+
+        /* Class Introduction */
+        .classes {
+            background: #f9f9f9;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .class-item {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #F68B1E;
+        }
+
+        .class-item h3 {
+            font-size: 1.8rem;
+            color: #F68B1E;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .class-item p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Operating Hours */
+        .hours {
+            background: #F68B1E;
+            color: white;
+            text-align: center;
+        }
+
+        .hours h2 {
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .hours-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hours-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hours-item p {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: #333;
+            color: white;
+        }
+
+        .problem h2 {
+            color: white;
+        }
+
+        .problem-list {
+            list-style: none;
+            margin: 40px 0;
+        }
+
+        .problem-list li {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .problem-list li::before {
+            content: '・';
+            color: #F68B1E;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #F68B1E;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Affinity Section */
+        .affinity {
+            background: #f9f9f9;
+        }
+
+        .affinity-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .affinity-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, #F68B1E, #E67600);
+            color: white;
+        }
+
+        .solution h2 {
+            color: white;
+        }
+
+        .solution-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .solution-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        /* Offer Section */
+        .offer {
+            background: #fff;
+            text-align: center;
+        }
+
+        .offer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .offer-list {
+            list-style: none;
+            margin: 40px 0;
+        }
+
+        .offer-list li {
+            font-size: 1.3rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 5px solid #F68B1E;
+        }
+
+        /* Narrowing Down */
+        .narrowing {
+            background: #f9f9f9;
+        }
+
+        .narrowing-list {
+            list-style: none;
+            margin: 40px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .narrowing-list li {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .narrowing-list li::before {
+            content: '✓';
+            color: #F68B1E;
+            position: absolute;
+            left: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            color: white;
+        }
+
+        .testimonial-content {
+            font-size: 1.3rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 40px auto;
+            line-height: 1.8;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #F68B1E, #E67600);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .final-cta h2 {
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #222;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            margin: 30px 0;
+        }
+
+        .footer-info h3 {
+            color: #F68B1E;
+            margin-bottom: 15px;
+        }
+
+        .footer-info p {
+            margin: 10px 0;
+        }
+
+        .footer-info a {
+            color: #F68B1E;
+            text-decoration: none;
+        }
+
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #F68B1E;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #E67600;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                top: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+
+            .nav-menu a {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                height: 100vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                font-size: 1.1rem;
+                padding: 15px 30px;
+                margin-top: 60px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .class-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .class-item {
+                padding: 30px 20px;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="nav-menu">
+        <a href="#hours">営業時間</a>
+        <a href="#pricing">料金表</a>
+        <a href="#map">地図</a>
+    </div>
+
+    <!-- First View -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>10月クロスフィット大塚グランドリニューアルオープン！</h1>
+            <p>LINE登録で、誰よりも早く最新情報と特典を受け取る</p>
+            <a href="https://lin.ee/aeg6RrH" class="cta-button">👉 LINEで限定クーポンを受け取る（9月登録者限定！）</a>
+        </div>
+    </section>
+
+    <!-- Class Introduction -->
+    <section class="section classes">
+        <div class="container">
+            <h2 class="section-title">クロスフィット大塚のクラス紹介</h2>
+            <div class="class-grid">
+                <div class="class-item">
+                    <h3>CrossFit Class</h3>
+                    <p>1時間で完結するクラスです。<br>
+                    実用的動作に基づいた高強度の運動を、コーチ主導のもとみんなで行います。<br>
+                    簡単な動作から難しい動作まで習得しながら、フィットネスを楽しみましょう。</p>
+                </div>
+                <div class="class-item">
+                    <h3>HYROX</h3>
+                    <p>世界中で愛されるファンクショナルレースのクラスです。<br>
+                    クロスフィット大塚からも多数参加！<br>
+                    誰でも挑戦できるレースは、今まさに日本でも大きな盛り上がりを見せています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operating Hours -->
+    <section class="section hours" id="hours">
+        <div class="container">
+            <h2 class="section-title">営業時間</h2>
+            <div class="hours-grid">
+                <div class="hours-item">
+                    <h3>平日</h3>
+                    <p>6:30 - 21:30</p>
+                </div>
+                <div class="hours-item">
+                    <h3>土日</h3>
+                    <p>8:00 - 13:30</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section problem">
+        <div class="container">
+            <h2 class="section-title">こんな悩み、ありませんか？</h2>
+            <ul class="problem-list">
+                <li>ジムに入ってそれなりに頑張っているけど飽きてきた</li>
+                <li>自己流でやって自信がない</li>
+                <li>どの種目をどのくらい、どの期間やったらいいかわからない</li>
+            </ul>
+            <p class="highlight">実際に24時間ジムや総合型フィットネスでは、多くの人が効果を感じる前にやめてしまいます。</p>
+        </div>
+    </section>
+
+    <!-- Affinity Section -->
+    <section class="section affinity">
+        <div class="container">
+            <h2 class="section-title orange">クロスフィット大塚なら運動習慣を続けられる？</h2>
+            <div class="affinity-content">
+                <p>ジムに入会しても続かない。<br>
+                フォームが正しいか分からず、結局自己流。<br>
+                そんな悩みを抱えていませんか？</p>
+                <p>クロスフィット大塚では1クラス4人までだから、コーチが一人ひとりを丁寧にサポート。<br>
+                正しいフォームを学びながら、仲間と一緒に運動習慣を楽しく続けられます。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section solution">
+        <div class="container">
+            <h2 class="section-title">クロスフィットに出会って、人生が変わりました。</h2>
+            <div class="solution-content">
+                <p>初めてクロスフィットを体験した時、衝撃を受けました。<br>
+                「あ！これだ！これがフィットネスの究極系だ」</p>
+                <p>みんなで同じ時間に全力で汗をかき、心拍数を上げる。<br>
+                部活みたいに熱中できる時間が、大人になっても味わえる。</p>
+                <p>ただ筋肉をつけるだけでなく、走れる・跳べる・持ち上げられる。<br>
+                動ける自分に変わっていくことが、本当に嬉しくて毎回達成感があります。</p>
+                <p>だからこそクロスフィット大塚を、<br>
+                「自分に自信を持つ場所」「生活を5倍楽しくする場所」としてつくりました。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section class="section offer" id="pricing">
+        <div class="container">
+            <h2 class="section-title orange">LINE登録者限定の特典</h2>
+            <div class="offer-content">
+                <ul class="offer-list">
+                    <li>✨ 9月登録者限定：期間限定無料体験クーポンコードを配信予定！</li>
+                    <li>⚠️ このクーポンは9月登録者しか受け取れません。</li>
+                </ul>
+                <p>リニューアルオープン前に、先行で特典を手に入れられるのはLINE登録者だけです。</p>
+                <a href="https://lin.ee/aeg6RrH" class="cta-button">👉 LINEで限定クーポンを受け取る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Narrowing Down Section -->
+    <section class="section narrowing">
+        <div class="container">
+            <h2 class="section-title">こんな方におすすめです</h2>
+            <ul class="narrowing-list">
+                <li>健康や体型が気になり始めた方</li>
+                <li>24時間ジムでは続けられなかった方</li>
+                <li>筋肉だけじゃなく「動ける体」を作りたい方</li>
+                <li>「習慣化できない自分」を変えたい方</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">クロスフィット大塚 口コミ</h2>
+            <div class="testimonial-content">
+                <p>「コーチの指導が丁寧で、初心者でも安心して始められました。仲間と一緒に頑張れるので、今まで続かなかった運動が楽しく続けられています！」</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>9月限定特典を逃さないでください！</h2>
+            <a href="https://lin.ee/aeg6RrH" class="cta-button">👉 LINEで限定クーポンを受け取る</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="map">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>クロスフィット大塚</h3>
+                    <p>〒170-0004 東京都豊島区北大塚１丁目３３−２２ ソシエ北大塚 1階</p>
+                    <p><a href="https://www.google.com/maps/place/%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%95%E3%82%A3%E3%83%83%E3%83%88%E5%A4%A7%E5%A1%9A/@35.7335764,139.7301631,17z/data=!4m16!1m9!3m8!1s0x60188d66c1c4289d:0x2eb583ad62c644a3!2z44Kv44Ot44K544OV44Kj44OD44OI5aSn5aGa!8m2!3d35.7335764!4d139.7301631!9m1!1b1!16s%2Fg%2F11rvg_x43s!3m5!1s0x60188d66c1c4289d:0x2eb583ad62c644a3!8m2!3d35.7335764!4d139.7301631!16s%2Fg%2F11rvg_x43s?hl=ja&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Google Mapsで確認</a></p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.instagram.com/crossfit_otsuka/" target="_blank">Instagram</a>
+                    <a href="https://lin.ee/aeg6RrH" target="_blank">LINE公式</a>
+                </div>
+                
+                <p>&copy; 2024 CrossFit Otsuka. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
