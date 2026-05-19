@@ -1,0 +1,72 @@
+name: Site Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install validators
+        run: |
+          npm install -g html-validate@8 linkinator@6
+
+      - name: HTML validation
+        run: |
+          html-validate '**/*.html' --config='{"extends":["html-validate:recommended"],"rules":{"void-style":"off","no-trailing-whitespace":"off","element-required-attributes":"off","no-inline-style":"off","wcag/h63":"off","attribute-boolean-style":"off"}}' || true
+
+      - name: Verify JSON-LD blocks parse
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            function walk(dir) {
+              return fs.readdirSync(dir, {withFileTypes:true}).flatMap(d => {
+                const p = path.join(dir, d.name);
+                if (d.isDirectory() && !p.includes("node_modules") && !p.includes(".git")) return walk(p);
+                if (d.isFile() && p.endsWith(".html")) return [p];
+                return [];
+              });
+            }
+            let failed = false;
+            for (const file of walk(".")) {
+              const html = fs.readFileSync(file, "utf8");
+              const re = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+              let m, i = 0;
+              while ((m = re.exec(html))) {
+                i++;
+                try { JSON.parse(m[1]); }
+                catch (e) {
+                  console.error(`${file} (block #${i}): ${e.message}`);
+                  failed = true;
+                }
+              }
+            }
+            if (failed) process.exit(1);
+            console.log("All JSON-LD blocks parsed.");
+          '
+
+      - name: Start static server
+        run: |
+          python3 -m http.server 8080 &
+          sleep 2
+
+      - name: Link check (internal)
+        run: |
+          linkinator http://localhost:8080/ \
+            --recurse \
+            --skip "https?://(www\.google\.com|www\.instagram\.com|lin\.ee|fonts\.googleapis\.com|crossfit-otsuka\.example\.com)" \
+            --format csv \
+          | tee linkinator.csv
+          # Fail if any broken (status >= 400)
+          ! awk -F, 'NR>1 && $2+0 >= 400 {print; exit 1}' linkinator.csv

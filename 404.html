@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ページが見つかりません（404）｜クロスフィット大塚</title>
+  <meta name="description" content="お探しのページは見つかりませんでした。クロスフィット大塚のサイトメニューからお探しください。">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="/">クロスフィット大塚</a>
+    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="globalNav">メニュー</button>
+    <nav class="global-nav" id="globalNav" aria-label="グローバルナビゲーション">
+      <ul>
+        <li><a href="/about.html">初めての方へ</a></li>
+        <li><a href="/pricing.html">料金</a></li>
+        <li><a href="/schedule.html">スケジュール</a></li>
+        <li><a href="/facility.html">施設紹介</a></li>
+        <li><a href="/coaches.html">コーチ紹介</a></li>
+        <li><a href="/testimonials.html">メンバーの声</a></li>
+        <li><a href="/blog/">ブログ</a></li>
+        <li><a href="/access.html">アクセス</a></li>
+        <li><a href="/trial.html">体験申込</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>404 - ページが見つかりません</h1>
+      <p>お探しのページはURLが変更されたか、削除された可能性があります。</p>
+      <a href="/" class="cta-button">トップページに戻る</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>主要なページ</h2>
+      <div class="grid cols-3">
+        <div class="card"><h3><a href="/about.html">初めての方へ</a></h3><p>クロスフィットとは何か、当ジムの特徴をご紹介。</p></div>
+        <div class="card"><h3><a href="/pricing.html">料金・プラン</a></h3><p>月会員・回数券・ドロップインの料金一覧。</p></div>
+        <div class="card"><h3><a href="/trial.html">体験レッスン申込</a></h3><p>初心者向けの体験レッスン受付中。</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="copyright">&copy; 2024 CrossFit Otsuka. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="mobile-cta" role="navigation" aria-label="クイックアクション">
+  <a href="/trial.html" class="primary">体験レッスン予約</a>
+  <a href="/contact.html" class="secondary">お問い合わせ</a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('globalNav');
+    if (btn && nav) {
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

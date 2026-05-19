@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="コーチ プロフィール画像">
+  <rect width="200" height="200" fill="#F68B1E"/>
+  <circle cx="100" cy="80" r="36" fill="#ffffff"/>
+  <path d="M40,180 C40,130 160,130 160,180 Z" fill="#ffffff"/>
+</svg>
