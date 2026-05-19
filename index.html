@@ -1,667 +1,262 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>クロスフィット大塚 - 10月グランドリニューアルオープン！</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation Menu */
-        .nav-menu {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 1000;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .nav-menu a:hover {
-            background: rgba(246, 139, 30, 0.8);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* First View */
-        .hero {
-            height: 120vh;
-            background-image: url('https://page.gensparksite.com/v1/base64_upload/820f61776ab368b86c8371865ea3bc2d');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            color: #F68B1E;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 15px;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #F68B1E, #E67600);
-            color: white;
-            padding: 20px 40px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(246, 139, 30, 0.4);
-            margin-top: 80px; /* 3cm下げる調整 */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(135deg, #E67600, #D66500);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(246, 139, 30, 0.6);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #333;
-        }
-
-        .section-title.orange {
-            color: #F68B1E;
-        }
-
-        /* Class Introduction */
-        .classes {
-            background: #f9f9f9;
-        }
-
-        .class-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .class-item {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #F68B1E;
-        }
-
-        .class-item h3 {
-            font-size: 1.8rem;
-            color: #F68B1E;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .class-item p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* Operating Hours */
-        .hours {
-            background: #F68B1E;
-            color: white;
-            text-align: center;
-        }
-
-        .hours h2 {
-            color: white;
-            margin-bottom: 40px;
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .hours-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hours-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .hours-item p {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        /* Problem Section */
-        .problem {
-            background: #333;
-            color: white;
-        }
-
-        .problem h2 {
-            color: white;
-        }
-
-        .problem-list {
-            list-style: none;
-            margin: 40px 0;
-        }
-
-        .problem-list li {
-            font-size: 1.2rem;
-            margin: 15px 0;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .problem-list li::before {
-            content: '・';
-            color: #F68B1E;
-            position: absolute;
-            left: 0;
-            font-size: 1.5rem;
-        }
-
-        .highlight {
-            font-weight: bold;
-            color: #F68B1E;
-            font-size: 1.3rem;
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        /* Affinity Section */
-        .affinity {
-            background: #f9f9f9;
-        }
-
-        .affinity-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .affinity-content p {
-            font-size: 1.2rem;
-            margin: 20px 0;
-            line-height: 1.8;
-        }
-
-        /* Solution Section */
-        .solution {
-            background: linear-gradient(135deg, #F68B1E, #E67600);
-            color: white;
-        }
-
-        .solution h2 {
-            color: white;
-        }
-
-        .solution-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .solution-content p {
-            font-size: 1.2rem;
-            margin: 20px 0;
-            line-height: 1.8;
-        }
-
-        /* Offer Section */
-        .offer {
-            background: #fff;
-            text-align: center;
-        }
-
-        .offer-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .offer-list {
-            list-style: none;
-            margin: 40px 0;
-        }
-
-        .offer-list li {
-            font-size: 1.3rem;
-            margin: 20px 0;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            border-left: 5px solid #F68B1E;
-        }
-
-        /* Narrowing Down */
-        .narrowing {
-            background: #f9f9f9;
-        }
-
-        .narrowing-list {
-            list-style: none;
-            margin: 40px 0;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .narrowing-list li {
-            font-size: 1.2rem;
-            margin: 15px 0;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            padding-left: 50px;
-        }
-
-        .narrowing-list li::before {
-            content: '✓';
-            color: #F68B1E;
-            position: absolute;
-            left: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background: #333;
-            color: white;
-            text-align: center;
-        }
-
-        .testimonials h2 {
-            color: white;
-        }
-
-        .testimonial-content {
-            font-size: 1.3rem;
-            font-style: italic;
-            max-width: 600px;
-            margin: 40px auto;
-            line-height: 1.8;
-        }
-
-        /* Final CTA */
-        .final-cta {
-            background: linear-gradient(135deg, #F68B1E, #E67600);
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        .final-cta h2 {
-            color: white;
-            margin-bottom: 40px;
-        }
-
-        /* Footer */
-        .footer {
-            background: #222;
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .footer-info {
-            margin: 30px 0;
-        }
-
-        .footer-info h3 {
-            color: #F68B1E;
-            margin-bottom: 15px;
-        }
-
-        .footer-info p {
-            margin: 10px 0;
-        }
-
-        .footer-info a {
-            color: #F68B1E;
-            text-decoration: none;
-        }
-
-        .footer-info a:hover {
-            text-decoration: underline;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.2rem;
-            text-decoration: none;
-            padding: 10px 20px;
-            background: #F68B1E;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #E67600;
-            transform: translateY(-2px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                flex-direction: column;
-                top: 20px;
-                right: 20px;
-                gap: 10px;
-            }
-
-            .nav-menu a {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                height: 100vh;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .cta-button {
-                font-size: 1.1rem;
-                padding: 15px 30px;
-                margin-top: 60px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .class-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .class-item {
-                padding: 30px 20px;
-            }
-
-            .hours-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大塚のクロスフィットジム｜クロスフィット大塚 公式サイト</title>
+  <meta name="description" content="JR大塚駅から徒歩圏内のクロスフィットジム「クロスフィット大塚」公式サイト。少人数制クラス・経験豊富なコーチ陣・ドロップイン歓迎。体験レッスン受付中。">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://crossfit-otsuka.example.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="大塚のクロスフィットジム｜クロスフィット大塚 公式サイト">
+  <meta property="og:description" content="少人数制・コーチ常駐のクロスフィットジム。大塚エリアで体験レッスン・ドロップイン受付中。">
+  <meta property="og:url" content="https://crossfit-otsuka.example.com/">
+  <meta property="og:site_name" content="クロスフィット大塚">
+  <meta property="og:locale" content="ja_JP">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- JSON-LD: LocalBusiness (SportsActivityLocation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "@id": "https://crossfit-otsuka.example.com/#gym",
+    "name": "クロスフィット大塚",
+    "alternateName": "CrossFit Otsuka",
+    "description": "大塚エリアのクロスフィット専門ジム。少人数制クラスで初心者から上級者までサポート。",
+    "url": "https://crossfit-otsuka.example.com/",
+    "logo": "https://crossfit-otsuka.example.com/assets/img/logo.png",
+    "image": "https://crossfit-otsuka.example.com/assets/img/og.jpg",
+    "telephone": "+81-3-0000-0000",
+    "priceRange": "¥¥",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "北大塚1丁目33-22 ソシエ北大塚 1階",
+      "addressLocality": "豊島区",
+      "addressRegion": "東京都",
+      "postalCode": "170-0004",
+      "addressCountry": "JP"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 35.7335764,
+      "longitude": 139.7301631
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "06:30",
+        "closes": "21:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday","Sunday"],
+        "opens": "08:00",
+        "closes": "13:30"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/crossfit_otsuka/",
+      "https://lin.ee/aeg6RrH"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "クロスフィット大塚",
+    "url": "https://crossfit-otsuka.example.com/"
+  }
+  </script>
 </head>
 <body>
-    <!-- Navigation Menu -->
-    <div class="nav-menu">
-        <a href="#hours">営業時間</a>
-        <a href="#pricing">料金表</a>
-        <a href="#map">地図</a>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="./">クロスフィット大塚</a>
+    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="globalNav">メニュー</button>
+    <nav class="global-nav" id="globalNav" aria-label="グローバルナビゲーション">
+      <ul>
+        <li><a href="./about.html">初めての方へ</a></li>
+        <li><a href="./pricing.html">料金</a></li>
+        <li><a href="./schedule.html">スケジュール</a></li>
+        <li><a href="./facility.html">施設紹介</a></li>
+        <li><a href="./coaches.html">コーチ紹介</a></li>
+        <li><a href="./testimonials.html">メンバーの声</a></li>
+        <li><a href="./blog/">ブログ</a></li>
+        <li><a href="./access.html">アクセス</a></li>
+        <li><a href="./trial.html">体験申込</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>大塚のクロスフィットジム｜クロスフィット大塚</h1>
+      <p>少人数制クラスで初心者も安心。動ける身体を仲間と一緒につくる。</p>
+      <a href="./trial.html" class="cta-button">体験レッスンを申し込む</a>
     </div>
+  </section>
 
-    <!-- First View -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>10月クロスフィット大塚グランドリニューアルオープン！</h1>
-            <p>LINE登録で、誰よりも早く最新情報と特典を受け取る</p>
-            <a href="https://lin.ee/aeg6RrH" class="cta-button">👉 LINEで限定クーポンを受け取る（9月登録者限定！）</a>
+  <section class="section">
+    <div class="container">
+      <h2>クロスフィット大塚の3つの特徴</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>少人数制クラス</h3>
+          <p>1クラス最大4名までの少人数制。コーチが一人ひとりのフォームを丁寧にチェックします。</p>
         </div>
-    </section>
+        <div class="card">
+          <h3>有資格コーチ常駐</h3>
+          <p>CrossFit Level 1/2 Trainer等の資格を持つコーチが、安全で効果的なトレーニングを提供します。</p>
+        </div>
+        <div class="card">
+          <h3>ドロップイン歓迎</h3>
+          <p>出張中・旅行中の方も都度利用が可能。事前予約で快適にトレーニングできます。</p>
+        </div>
+      </div>
+      <p class="text-center" style="margin-top:32px;"><a class="cta-button" href="./about.html">詳しく見る</a></p>
+    </div>
+  </section>
 
-    <!-- Class Introduction -->
-    <section class="section classes">
-        <div class="container">
-            <h2 class="section-title">クロスフィット大塚のクラス紹介</h2>
-            <div class="class-grid">
-                <div class="class-item">
-                    <h3>CrossFit Class</h3>
-                    <p>1時間で完結するクラスです。<br>
-                    実用的動作に基づいた高強度の運動を、コーチ主導のもとみんなで行います。<br>
-                    簡単な動作から難しい動作まで習得しながら、フィットネスを楽しみましょう。</p>
-                </div>
-                <div class="class-item">
-                    <h3>HYROX</h3>
-                    <p>世界中で愛されるファンクショナルレースのクラスです。<br>
-                    クロスフィット大塚からも多数参加！<br>
-                    誰でも挑戦できるレースは、今まさに日本でも大きな盛り上がりを見せています。</p>
-                </div>
-            </div>
+  <section class="section alt">
+    <div class="container">
+      <h2>クラス紹介</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>CrossFit Class</h3>
+          <p>1時間で完結する高強度ファンクショナルトレーニングのクラスです。実用的な動作を、コーチ主導のもとみんなで行います。</p>
         </div>
-    </section>
+        <div class="card">
+          <h3>HYROX</h3>
+          <p>世界中で人気のファンクショナルレース「HYROX」対応のクラス。当ジムからも多数の選手が参加しています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Operating Hours -->
-    <section class="section hours" id="hours">
-        <div class="container">
-            <h2 class="section-title">営業時間</h2>
-            <div class="hours-grid">
-                <div class="hours-item">
-                    <h3>平日</h3>
-                    <p>6:30 - 21:30</p>
-                </div>
-                <div class="hours-item">
-                    <h3>土日</h3>
-                    <p>8:00 - 13:30</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="section">
+    <div class="container">
+      <h2>料金プラン</h2>
+      <p class="text-center">月会員プラン・回数券・ドロップイン（都度利用）をご用意。詳細は料金ページでご確認ください。</p>
+      <p class="text-center" style="margin-top:24px;"><a class="cta-button secondary" href="./pricing.html">料金一覧を見る</a></p>
+    </div>
+  </section>
 
-    <!-- Problem Section -->
-    <section class="section problem">
-        <div class="container">
-            <h2 class="section-title">こんな悩み、ありませんか？</h2>
-            <ul class="problem-list">
-                <li>ジムに入ってそれなりに頑張っているけど飽きてきた</li>
-                <li>自己流でやって自信がない</li>
-                <li>どの種目をどのくらい、どの期間やったらいいかわからない</li>
-            </ul>
-            <p class="highlight">実際に24時間ジムや総合型フィットネスでは、多くの人が効果を感じる前にやめてしまいます。</p>
+  <section class="section alt">
+    <div class="container">
+      <h2>営業時間</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>平日</h3>
+          <p>6:30 - 21:30</p>
         </div>
-    </section>
+        <div class="card">
+          <h3>土日</h3>
+          <p>8:00 - 13:30</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Affinity Section -->
-    <section class="section affinity">
-        <div class="container">
-            <h2 class="section-title orange">クロスフィット大塚なら運動習慣を続けられる？</h2>
-            <div class="affinity-content">
-                <p>ジムに入会しても続かない。<br>
-                フォームが正しいか分からず、結局自己流。<br>
-                そんな悩みを抱えていませんか？</p>
-                <p>クロスフィット大塚では1クラス4人までだから、コーチが一人ひとりを丁寧にサポート。<br>
-                正しいフォームを学びながら、仲間と一緒に運動習慣を楽しく続けられます。</p>
-            </div>
-        </div>
-    </section>
+  <section class="section">
+    <div class="container">
+      <h2>こんな方におすすめ</h2>
+      <ul class="checklist">
+        <li>健康や体型が気になり始めた方</li>
+        <li>24時間ジムでは続けられなかった方</li>
+        <li>筋肉だけでなく「動ける体」を作りたい方</li>
+        <li>仲間と楽しみながら習慣化したい方</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Solution Section -->
-    <section class="section solution">
-        <div class="container">
-            <h2 class="section-title">クロスフィットに出会って、人生が変わりました。</h2>
-            <div class="solution-content">
-                <p>初めてクロスフィットを体験した時、衝撃を受けました。<br>
-                「あ！これだ！これがフィットネスの究極系だ」</p>
-                <p>みんなで同じ時間に全力で汗をかき、心拍数を上げる。<br>
-                部活みたいに熱中できる時間が、大人になっても味わえる。</p>
-                <p>ただ筋肉をつけるだけでなく、走れる・跳べる・持ち上げられる。<br>
-                動ける自分に変わっていくことが、本当に嬉しくて毎回達成感があります。</p>
-                <p>だからこそクロスフィット大塚を、<br>
-                「自分に自信を持つ場所」「生活を5倍楽しくする場所」としてつくりました。</p>
-            </div>
-        </div>
-    </section>
+  <section class="section orange-bg">
+    <div class="container text-center">
+      <h2>まずは体験レッスンへ</h2>
+      <p>初心者向けの基本動作レクチャー付き。手ぶらでお越しいただけます。</p>
+      <p style="margin-top:24px;"><a class="cta-button secondary" href="./trial.html">体験レッスンを申し込む</a></p>
+    </div>
+  </section>
 
-    <!-- Offer Section -->
-    <section class="section offer" id="pricing">
-        <div class="container">
-            <h2 class="section-title orange">LINE登録者限定の特典</h2>
-            <div class="offer-content">
-                <ul class="offer-list">
-                    <li>✨ 9月登録者限定：期間限定無料体験クーポンコードを配信予定！</li>
-                    <li>⚠️ このクーポンは9月登録者しか受け取れません。</li>
-                </ul>
-                <p>リニューアルオープン前に、先行で特典を手に入れられるのはLINE登録者だけです。</p>
-                <a href="https://lin.ee/aeg6RrH" class="cta-button">👉 LINEで限定クーポンを受け取る</a>
-            </div>
-        </div>
-    </section>
+</main>
 
-    <!-- Narrowing Down Section -->
-    <section class="section narrowing">
-        <div class="container">
-            <h2 class="section-title">こんな方におすすめです</h2>
-            <ul class="narrowing-list">
-                <li>健康や体型が気になり始めた方</li>
-                <li>24時間ジムでは続けられなかった方</li>
-                <li>筋肉だけじゃなく「動ける体」を作りたい方</li>
-                <li>「習慣化できない自分」を変えたい方</li>
-            </ul>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>クロスフィット大塚</h3>
+        <p class="footer-nap">
+          〒170-0004<br>
+          東京都豊島区北大塚1丁目33-22 ソシエ北大塚 1階<br>
+          TEL: 03-0000-0000
+        </p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/crossfit_otsuka/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://lin.ee/aeg6RrH" target="_blank" rel="noopener">LINE</a>
         </div>
-    </section>
+      </div>
+      <div>
+        <h3>サイトメニュー</h3>
+        <ul>
+          <li><a href="./about.html">初めての方へ</a></li>
+          <li><a href="./pricing.html">料金・プラン</a></li>
+          <li><a href="./schedule.html">スケジュール</a></li>
+          <li><a href="./facility.html">施設紹介</a></li>
+          <li><a href="./coaches.html">コーチ紹介</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>情報</h3>
+        <ul>
+          <li><a href="./testimonials.html">メンバーの声</a></li>
+          <li><a href="./blog/">ブログ・お知らせ</a></li>
+          <li><a href="./access.html">アクセス</a></li>
+          <li><a href="./trial.html">体験レッスン申込</a></li>
+          <li><a href="./contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>規約・運営</h3>
+        <ul>
+          <li><a href="./terms.html">特定商取引法に基づく表記</a></li>
+          <li><a href="./privacy.html">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 CrossFit Otsuka. All rights reserved.</p>
+  </div>
+</footer>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">クロスフィット大塚 口コミ</h2>
-            <div class="testimonial-content">
-                <p>「コーチの指導が丁寧で、初心者でも安心して始められました。仲間と一緒に頑張れるので、今まで続かなかった運動が楽しく続けられています！」</p>
-            </div>
-        </div>
-    </section>
+<div class="mobile-cta" role="navigation" aria-label="クイックアクション">
+  <a href="./trial.html" class="primary">体験レッスン予約</a>
+  <a href="./contact.html" class="secondary">お問い合わせ</a>
+</div>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta">
-        <div class="container">
-            <h2>9月限定特典を逃さないでください！</h2>
-            <a href="https://lin.ee/aeg6RrH" class="cta-button">👉 LINEで限定クーポンを受け取る</a>
-        </div>
-    </section>
+<script>
+  // mobile nav toggle
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('globalNav');
+    if (btn && nav) {
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  });
+</script>
 
-    <!-- Footer -->
-    <footer class="footer" id="map">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>クロスフィット大塚</h3>
-                    <p>〒170-0004 東京都豊島区北大塚１丁目３３−２２ ソシエ北大塚 1階</p>
-                    <p><a href="https://www.google.com/maps/place/%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%95%E3%82%A3%E3%83%83%E3%83%88%E5%A4%A7%E5%A1%9A/@35.7335764,139.7301631,17z/data=!4m16!1m9!3m8!1s0x60188d66c1c4289d:0x2eb583ad62c644a3!2z44Kv44Ot44K544OV44Kj44OD44OI5aSn5aGa!8m2!3d35.7335764!4d139.7301631!9m1!1b1!16s%2Fg%2F11rvg_x43s!3m5!1s0x60188d66c1c4289d:0x2eb583ad62c644a3!8m2!3d35.7335764!4d139.7301631!16s%2Fg%2F11rvg_x43s?hl=ja&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Google Mapsで確認</a></p>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://www.instagram.com/crossfit_otsuka/" target="_blank">Instagram</a>
-                    <a href="https://lin.ee/aeg6RrH" target="_blank">LINE公式</a>
-                </div>
-                
-                <p>&copy; 2024 CrossFit Otsuka. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>

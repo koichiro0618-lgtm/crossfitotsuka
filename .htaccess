@@ -1,0 +1,46 @@
+# ============================================
+# CrossFit Otsuka - Apache設定ファイル
+# 要件: HTTPS強制リダイレクト・URL正規化
+# ============================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # HTTPSへの301リダイレクト (要件3.2)
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # www あり→なし への正規化 (要件3.2)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # index.html を末尾なしに正規化 (要件3.2)
+  RewriteCond %{THE_REQUEST} /index\.html[\s?] [NC]
+  RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
+</IfModule>
+
+# ============================================
+# キャッシュ・圧縮（パフォーマンス対策）
+# ============================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+# ============================================
+# セキュリティヘッダ
+# ============================================
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
